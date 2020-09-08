@@ -1,5 +1,6 @@
 const sentence = "gHIDyon WriTIng And ScriPtiNg In THe eYe blOCK Of tHE CiVIc ceNtER";
 let reversedCase = "";
+let wordUpperCase = [];
 
 const convertCase = (string) => {
     for (let i = 0; i < string.length; i++) {
@@ -19,8 +20,18 @@ const convertCase = (string) => {
 convertCase(sentence);
 
 const caseArray = reversedCase.split(" ");
-console.log(caseArray);
 
+for (let i = 0; i < caseArray.length; i++) {
+    let firstLetter = caseArray[i].charAt(0);
+
+    if (firstLetter === firstLetter.toUpperCase()) {
+        wordUpperCase.push(caseArray[i]);
+    }
+}
+
+console.log(sentence);
+console.log(reversedCase);
+console.log(wordUpperCase);
 
 
 
