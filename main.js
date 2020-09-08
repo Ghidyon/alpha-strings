@@ -4,7 +4,6 @@ const wordUpperCase = [];
 const ingSuffix = [];
 const palindromeList = [];
 
-// Case Conversion
 const convertCase = (string) => {
     for (let i = 0; i < string.length; i++) {
         let character = string.charAt(i);
@@ -22,39 +21,36 @@ const convertCase = (string) => {
 
 convertCase(sentence);
 
-
 const caseArray = reversedCase.split(" ");
-console.log(caseArray);
 const arrLength = caseArray.length;
 
-for (let i = 0; i < arrLength; i++) {
-    let firstLetter = caseArray[i].charAt(0);
+const wordUpperCased = (array) => {
+    for (let i = 0; i < arrLength; i++) {
+        let firstLetter = array[i].charAt(0);
 
-    if (firstLetter === firstLetter.toUpperCase()) {
-        wordUpperCase.push(caseArray[i]);
+        if (firstLetter === firstLetter.toUpperCase()) {
+            wordUpperCase.push(array[i]);
+        }
     }
+
+    return wordUpperCase;
 }
 
-console.log(sentence);
-console.log(reversedCase);
-console.log(wordUpperCase);
+const wordswithIngSuffix = (array) => {
+    for (let i = 0; i < arrLength; i++) {
+        let matchIng = array[i].match(/ing/gi);
 
-for (let i = 0; i < arrLength; i++) {
-    let matchIng = caseArray[i].match(/ing/gi);
-
-    if (matchIng == "iNG") {
-        console.log(caseArray);
-        ingSuffix.push(caseArray[1]);
+        if (matchIng == "iNG") {
+            ingSuffix.push(array[1]);
+        }
+        else if (matchIng == "InG") {
+            ingSuffix.push(array[3]);
+        }
     }
 
-    else if (matchIng == "InG") {
-        ingSuffix.push(caseArray[3]);
-    }
+    return ingSuffix;
 }
 
-console.log(ingSuffix);
-
-// Palindrome
 const palindromeChecker = (array) => {
     for (let i = 0; i < arrLength; i++) {
         let caseArrayElement = array[i].toLowerCase();
@@ -64,14 +60,18 @@ const palindromeChecker = (array) => {
             palindromeList.push(caseArrayElement);
         }
     }
-    console.log(palindromeList);
+
+    return palindromeList;
 }
 
-/* const sentenceObjectItem = () => {
-
+const sentenceObjectItems = () => {
     const sentenceArrayObject = {
-        uppercased: ,
-        palindrome: palindromeChecker(caseArray);
-
+        uppercased: wordUpperCased(caseArray),
+        ing: wordswithIngSuffix(caseArray),
+        palindrome: palindromeChecker(caseArray)
     }
-} */
+
+    console.log(sentenceArrayObject);
+}
+
+sentenceObjectItems();
